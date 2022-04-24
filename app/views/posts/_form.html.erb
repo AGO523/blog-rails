@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.rich_text_area :title %>
+    <div>
+      <%= form.label :title %>
+      <%= form.text_area :title %>
+    </div>
+    <%= form.label :image %>
+    <%= form.file_field :top_image, class: "form-control-file" %>
   
     <%= form.label :cotent %>
     <%= form.rich_text_area :cotent %>

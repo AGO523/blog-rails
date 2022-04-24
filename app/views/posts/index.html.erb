@@ -6,7 +6,9 @@
       </div>
   </div>
 </header>
-<div class="container">
+<%
+=begin%>
+ <div class="container">
   <p id="notice"><%= notice %></p>
 
   <h1>Posts</h1>
@@ -22,6 +24,8 @@
     <tbody>
       <% @posts.each do |post| %>
         <tr>
+          <td><%= image_tag post.top_image.variant(resize_to_limit: [200, 200]) %></td>
+          <td><%= post.title %></td>
           <td><%= post.cotent %></td>
           <td><%= link_to 'Show', post %></td>
           <td><%= link_to 'Edit', edit_post_path(post) %></td>
@@ -32,7 +36,9 @@
   </table>
 
   <br>
-</div>
+</div> 
+<%
+=end%>
 <div class="container">
   <button type="button" class="btn btn-light">
     <%= link_to 'New Post', new_post_path %>
@@ -41,16 +47,21 @@
 
 <div class="container">
   <div class="row">
+  <% @posts.each do |post| %>
       <!-- Blog entries-->
       <div class="col-lg-8">
           <!-- Featured blog post-->
           <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+            <a><%= image_tag("/images/top-image.jpg", class: "card-img-top") %></a>
+            <%
+=begin%>
+ <a href="#!"><%= image_tag post.top_image.variant(resize_to_limit: [200, 200]) %></a> 
+<%
+=end%>
             <div class="card-body">
-                <div class="small text-muted">January 1, 2022</div>
-                <h2 class="card-title">Featured Post Title</h2>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                <a class="btn btn-primary" href="#!">Read more →</a>
+                <div class="small text-muted"><%= post.created_at %></div>
+                <h2 class="card-title"><%= post.title %></h2>
+                <a><%= link_to 'read more ->', post %></a>
             </div>
           </div>
           <!-- Nested row for non-featured blog posts-->
@@ -58,21 +69,21 @@
               <div class="col-lg-6">
                   <!-- Blog post-->
                   <div class="card mb-4">
-                      <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                      <a><%= image_tag("/images/rails.png", class: "card-img-top") %></a>
                       <div class="card-body">
                           <div class="small text-muted">January 1, 2022</div>
-                          <h2 class="card-title h4">Post Title</h2>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                          <h2 class="card-title h4">【Rails】devise-two-factorを使った2段階認証の実装方法【初学者】</h2>
+                          
                           <a class="btn btn-primary" href="#!">Read more →</a>
                       </div>
                   </div>
                   <!-- Blog post-->
                   <div class="card mb-4">
-                      <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                      <a><%= image_tag("/images/rails.png", class: "card-img-top") %></a>
                       <div class="card-body">
                           <div class="small text-muted">January 1, 2022</div>
-                          <h2 class="card-title h4">Post Title</h2>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                          <h2 class="card-title h4">【Rails】devise-two-factorを使った2段階認証の実装方法【初学者】</h2>
+                          
                           <a class="btn btn-primary" href="#!">Read more →</a>
                       </div>
                   </div>
@@ -83,8 +94,8 @@
                       <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                       <div class="card-body">
                           <div class="small text-muted">January 1, 2022</div>
-                          <h2 class="card-title h4">Post Title</h2>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                          <h2 class="card-title h4">【Rails】devise-two-factorを使った2段階認証の実装方法【初学者】</h2>
+                          
                           <a class="btn btn-primary" href="#!">Read more →</a>
                       </div>
                   </div>
@@ -93,8 +104,8 @@
                       <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                       <div class="card-body">
                           <div class="small text-muted">January 1, 2022</div>
-                          <h2 class="card-title h4">Post Title</h2>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
+                          <h2 class="card-title h4">【Rails】devise-two-factorを使った2段階認証の実装方法【初学者】</h2>
+                          
                           <a class="btn btn-primary" href="#!">Read more →</a>
                       </div>
                   </div>
@@ -166,6 +177,7 @@
           </div>
         </div>
     </div>
+    <% end %>
   </div>
 </div>
 

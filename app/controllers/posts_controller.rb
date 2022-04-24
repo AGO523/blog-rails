@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.with_rich_text_cotent
+    @posts = Post.with_rich_text_cotent.page(params[:page]).per(8)
   end
 
   # GET /posts/1 or /posts/1.json

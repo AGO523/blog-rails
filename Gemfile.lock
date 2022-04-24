@@ -82,6 +82,8 @@ GEM
     crass (1.0.6)
     erubi (1.10.0)
     ffi (1.15.5)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -229,6 +231,7 @@ DEPENDENCIES
   bootstrap5-kaminari-views (~> 0.0.1)
   byebug
   capybara (>= 2.15)
+  font-awesome-rails
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   kaminari (~> 1.2.2)

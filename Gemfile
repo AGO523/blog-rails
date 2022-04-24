@@ -16,6 +16,7 @@ gem 'active_storage_validations', '~> 0.8.8'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'kaminari', '~> 1.2.2'
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
+gem 'font-awesome-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -58,6 +58,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    acts-as-taggable-on (6.5.0)
+      activerecord (>= 5.0, < 6.1)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     bindex (0.8.1)
@@ -227,6 +229,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_storage_validations (~> 0.8.8)
+  acts-as-taggable-on (~> 6.0)
   bootsnap (>= 1.4.2)
   bootstrap5-kaminari-views (~> 0.0.1)
   byebug

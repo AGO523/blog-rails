@@ -28,6 +28,7 @@
                     <%= link_to [post] do %>
                       <h3 class="card-title"><%= post.title %></h3>
                     <% end %>
+                    <%= render 'posts/tag_list', tag_list: post.tag_list %>
                   </div>
               </div>
             </div>

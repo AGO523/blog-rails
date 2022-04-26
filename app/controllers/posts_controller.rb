@@ -3,7 +3,14 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.with_rich_text_cotent.page(params[:page]).per(8)
+    @posts = Post.with_rich_text_cotent.page(params[:page]).per(6)
+
+    if params[:tag_name]
+      @posts = Post.tagged_with("#{params[:tag_name]}")
+    end
+
+    @post_search_form = PostSearchForm.new(event_search_form_params)
+    @events = @event_search_form.search
   end
 
   # GET /posts/1 or /posts/1.json
@@ -66,5 +73,9 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:cotent, :top_image, :title, :tag_list)
+    end
+
+    def post_search_form_params
+      params.fetch(:post_search_form, {}).permit(:keyword).merge(page: params[:page])
     end
 end

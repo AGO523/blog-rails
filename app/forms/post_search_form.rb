@@ -4,6 +4,7 @@ class PostSearchForm
   include ActiveModel::Attributes
   # keywordとpageは、ActiveModel::Attributesモジュールのattributeメソッドを利用しセッターとゲッターを定義しています
   attribute :keyword, :string
+  attribute :title, :string
   attribute :page, :integer
 
   def search
@@ -13,7 +14,7 @@ class PostSearchForm
       where:{ start_at: { gt: start_at } },
       # searchkickはデフォルトでkaminariを利用したページングに対応しているので、ページングに関してはpageとper_pageオプションをsearchメソッドに渡すだけです。
       page: page,
-      per_page: 10
+      per_page: 8
     )
   end
 

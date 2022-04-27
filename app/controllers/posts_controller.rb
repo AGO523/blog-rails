@@ -8,9 +8,8 @@ class PostsController < ApplicationController
     if params[:tag_name]
       @posts = Post.tagged_with("#{params[:tag_name]}")
     end
-
-    @post_search_form = PostSearchForm.new(event_search_form_params)
-    @events = @event_search_form.search
+    @post_search_form = PostSearchForm.new(post_search_form_params)
+    @posts = @post_search_form.search
   end
 
   # GET /posts/1 or /posts/1.json
@@ -76,6 +75,6 @@ class PostsController < ApplicationController
     end
 
     def post_search_form_params
-      params.fetch(:post_search_form, {}).permit(:keyword).merge(page: params[:page])
+      params.fetch(:post_search_form, {}).permit(:keyword, :title).merge(page: params[:page])
     end
 end

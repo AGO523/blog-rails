@@ -1,13 +1,3 @@
-GIT
-  remote: https://github.com/elasticsearch/elasticsearch-rails.git
-  revision: b66fe71cc4b9b10069bf6d39dbbfcc0b117a08a5
-  specs:
-    elasticsearch-model (7.2.1)
-      activesupport (> 3)
-      elasticsearch (~> 7)
-      hashie
-    elasticsearch-rails (7.2.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -97,6 +87,11 @@ GEM
       elasticsearch-transport (= 7.4.0)
     elasticsearch-api (7.4.0)
       multi_json
+    elasticsearch-model (7.2.1)
+      activesupport (> 3)
+      elasticsearch (~> 7)
+      hashie
+    elasticsearch-rails (7.2.1)
     elasticsearch-transport (7.4.0)
       faraday
       multi_json
@@ -263,8 +258,8 @@ DEPENDENCIES
   bootstrap5-kaminari-views (~> 0.0.1)
   byebug
   capybara (>= 2.15)
-  elasticsearch-model!
-  elasticsearch-rails!
+  elasticsearch-model
+  elasticsearch-rails
   font-awesome-rails
   image_processing (~> 1.2)
   jbuilder (~> 2.7)

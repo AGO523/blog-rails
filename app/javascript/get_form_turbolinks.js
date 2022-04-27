@@ -1,13 +1,13 @@
 import Turbolinks from "turbolinks";
 
-document.addEventListener("turbolinks:load", function (event) {
+document.addEventListener("turbolinks:load", function (post) {
   const forms = document.querySelectorAll("form[method=get][data-remote=true]")
   for (const form of forms) {
-    form.addEventListener("ajax:beforeSend", function (event) {
-      const options = event.detail[1]
+    form.addEventListener("ajax:beforeSend", function (post) {
+      const options = post.detail[1]
 
       Turbolinks.visit(options.url)
-      event.preventDefault()
+      post.preventDefault()
     })
   }
 })

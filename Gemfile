@@ -21,6 +21,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'searchkick', '~> 4.3.0'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

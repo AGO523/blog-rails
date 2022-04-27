@@ -29,7 +29,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">login</a></li>
+                        <% if current_user %>
+                            <li class="nav-item"><%= current_user.email %>さん</li>
+                            <li class="nav-item"><%= link_to 'アカウント編集', edit_user_registration_path, class: "nav-link" %></li>
+                            <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+                        <% else %>
+                            <li class="nav-item"><%= link_to 'アカウント登録', new_user_registration_path, class: "nav-link" %></li>
+                            <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: "nav-link" %></li>
+                        <% end %>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Blog</a></li>
                     </ul>
                 </div>
@@ -39,5 +47,11 @@
 
   <body>
   <%= yield %>
+    <% if flash[:notice] %>
+    <p>Notice: <%= flash[:notice] %></p>
+    <% end %>
+    <% if flash[:alert] %>
+        <p>Alert: <%= flash[:alert] %></p>
+    <% end %>
   </body>
 </html>

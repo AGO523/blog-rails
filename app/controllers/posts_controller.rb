@@ -1,15 +1,20 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :ensure_user, only: %i[edit update destroy]
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.with_rich_text_cotent.page(params[:page]).per(6)
-
-    if params[:tag_name]
-      @posts = Post.tagged_with("#{params[:tag_name]}")
-    end
-    @post_search_form = PostSearchForm.new(post_search_form_params)
-    @posts = @post_search_form.search
+    
+    # if params[:tag_name]
+    #   @posts = Post.tagged_with("#{params[:tag_name]}")
+    # end
+    # @post_search_form = PostSearchForm.new(post_search_form_params)
+    # if @post_search_form.present?
+    #   @posts = @post_search_form.search
+    # else
+      @posts = Post.with_rich_text_cotent.page(params[:page]).per(6)
+    # end
   end
 
   # GET /posts/1 or /posts/1.json
@@ -72,6 +77,12 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:cotent, :top_image, :title, :tag_list)
+    end
+
+    def ensure_user
+      @posts = current_user.posts
+      @post = @posts.find_by(id: params[:id])
+      redirect_to new_post_path unless @post
     end
 
     def post_search_form_params

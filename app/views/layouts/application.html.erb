@@ -16,7 +16,11 @@
     <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
 
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../../assets/stylesheets/styles.css" rel="stylesheet" />
+    <%
+=begin%>
+ <link href="../../assets/stylesheets/styles.css" rel="stylesheet" /> 
+<%
+=end%>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -29,7 +33,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">login</a></li>
                         <% if current_user %>
                             <li class="nav-item"><%= current_user.email %>さん</li>
                             <li class="nav-item"><%= link_to 'アカウント編集', edit_user_registration_path, class: "nav-link" %></li>
@@ -48,7 +51,7 @@
   <body>
   <%= yield %>
     <% if flash[:notice] %>
-    <p>Notice: <%= flash[:notice] %></p>
+        <p>Notice: <%= flash[:notice] %></p>
     <% end %>
     <% if flash[:alert] %>
         <p>Alert: <%= flash[:alert] %></p>

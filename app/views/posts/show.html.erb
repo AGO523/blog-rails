@@ -9,12 +9,19 @@
               <div class="text-muted fst-italic mb-2"><%= @post.updated_at.to_s(:datetime_jp) %></div>
               <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
               <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+              <%= render 'posts/tag_list', tag_list: @post.tag_list %>
           </header>
           <figure class="mb-4"><%= image_tag @post.top_image.variant(resize_to_fit: [414, 700]).processed %></figure>
           <section class="mb-5">
             <p class="fs-5 mb-4"><%= @post.cotent %></p>
           </section>
         </article>
+          <% @post.comments.each do |comment| %>
+            <p>名前</p>
+            <p><%= comment.name %></p>
+            <p>コメント</p>
+            <p><%= comment.content %></p>
+          <% end %>
         <%= form_with(model: [@post, @comment], local: true) do |form| %>
           <div class="row">
             <%= form.label :name %>

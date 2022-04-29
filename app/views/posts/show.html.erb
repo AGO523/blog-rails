@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-lg-8">
       <article>
-          <header class="mb-4">
+          <header class="mb-4 mt-5">
               <h1 class="fw-bolder mb-1"><%= @post.title %></h1>
               <div class="text-muted fst-italic mb-2"><%= @post.updated_at.to_s(:datetime_jp) %></div>
               <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
@@ -16,6 +16,11 @@
           </section>
         </article>
         <%= form_with(model: [@post, @comment], local: true) do |form| %>
+          <div class="row">
+            <%= form.label :name %>
+            <%= form.hidden_field :post_id, value: @post.id %>
+            <%= form.text_field :name %>
+          </div>
           <div class="row">
             <%= form.label :cotent %>
             <%= form.hidden_field :post_id, value: @post.id %>

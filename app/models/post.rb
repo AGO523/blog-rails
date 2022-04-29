@@ -3,8 +3,9 @@ class Post < ApplicationRecord
   # include Elasticsearch::Model
   # include Elasticsearch::Model::Callbacks
 
+  has_many :comments, dependent: :destroy
   belongs_to :user
-  
+
   has_rich_text :cotent
   has_one_attached :top_image
   acts_as_taggable_on :tags

@@ -15,9 +15,21 @@
             <p class="fs-5 mb-4"><%= @post.cotent %></p>
           </section>
         </article>
+        <%= form_with(model: [@post, @comment], local: true) do |form| %>
+          <div class="row">
+            <%= form.label :cotent %>
+            <%= form.hidden_field :post_id, value: @post.id %>
+            <%= form.text_area :cotent %>
+          </div>
+          <div class="row">
+            <div class="actions">
+              <%= form.submit %>
+            </div>
+          </div>
+        <% end %>
     </div>
-    <div class="col-lg-4">
-          <%= render partial: "side_widget" %>
+      <div class="col-lg-4">
+        <%= render partial: "side_widget" %>
       </div>
   </div>
 </div>

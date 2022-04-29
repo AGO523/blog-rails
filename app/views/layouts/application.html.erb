@@ -16,11 +16,7 @@
     <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
 
     <!-- Core theme CSS (includes Bootstrap)-->
-    <%
-=begin%>
- <link href="../../assets/stylesheets/styles.css" rel="stylesheet" /> 
-<%
-=end%>
+    <link href="../../assets/stylesheets/styles.css" rel="stylesheet" />
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -51,7 +47,7 @@
   <body>
   <%= yield %>
     <% if flash[:notice] %>
-        <p>Notice: <%= flash[:notice] %></p>
+    <p>Notice: <%= flash[:notice] %></p>
     <% end %>
     <% if flash[:alert] %>
         <p>Alert: <%= flash[:alert] %></p>

@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[index show]
   before_action :ensure_user, only: %i[edit update destroy]
+  before_action :admin_confirmation, only: %i[edit update destroy new]
 
   # GET /posts or /posts.json
   def index
@@ -90,5 +91,11 @@ class PostsController < ApplicationController
 
     def post_search_form_params
       params.fetch(:post_search_form, {}).permit(:keyword, :title).merge(page: params[:page])
+    end
+
+    def admin_confirmation
+      unless current_user.admin == true
+        redirect_to root_path
+      end
     end
 end

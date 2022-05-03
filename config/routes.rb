@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create]
   end
   
-  match "*path" => "application#error404", via: :all
+  # match "*path" => "application#error404", via: :all
 end

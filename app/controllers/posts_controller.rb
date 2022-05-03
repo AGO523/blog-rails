@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.with_rich_text_cotent.page(params[:page]).per(6)
     end
-    
+
     @tags = Post.tags_on(:tags)
   end
 
@@ -23,6 +23,7 @@ class PostsController < ApplicationController
   def show
     @comments = @post.comments
     @comment = Comment.new
+    @tags = Post.tags_on(:tags)
   end
 
   # GET /posts/new

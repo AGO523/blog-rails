@@ -7,15 +7,14 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     
-    # if params[:tag_name]
-    #   @posts = Post.tagged_with("#{params[:tag_name]}")
-    # end
     # @post_search_form = PostSearchForm.new(post_search_form_params)
     # if @post_search_form.present?
     #   @posts = @post_search_form.search
-    # else
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag]).page(params[:page]).per(6)
+    else
       @posts = Post.with_rich_text_cotent.page(params[:page]).per(6)
-    # end
+    end
   end
 
   # GET /posts/1 or /posts/1.json

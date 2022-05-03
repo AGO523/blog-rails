@@ -10,6 +10,7 @@
               <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
               <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
               <%= render 'posts/tag_list', tag_list: @post.tag_list %>
+              <p>tags: <%= raw(@post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
           </header>
           <figure class="mb-4"><%= image_tag @post.top_image.variant(resize_to_fit: [414, 700]).processed %></figure>
           <section class="mb-5">

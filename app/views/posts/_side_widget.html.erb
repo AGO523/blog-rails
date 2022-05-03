@@ -1,5 +1,5 @@
 <div class="card mb-4 mt-5">
-  <div class="card-header">Search</div>
+  <div class="card-header">タイトル検索</div>
   <div class="card-body">
     <%= form_with(model: @post_search_form, url: root_path, method: :get) do |form| %>
       <%= form.label :title, "タイトル" %>
@@ -10,29 +10,20 @@
 </div>
 <!-- Categories widget-->
 <div class="card mb-4">
-    <div class="card-header">Categories</div>
+    <div class="card-header">タグ検索</div>
     <div class="card-body">
         <div class="row">
-            <div class="col-sm-6">
-                <ul class="list-unstyled mb-0">
-                    <li><a href="#!">Web Design</a></li>
-                    <li><a href="#!">HTML</a></li>
-                    <li><a href="#!">Freebies</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-6">
-                <ul class="list-unstyled mb-0">
-                    <li><a href="#!">JavaScript</a></li>
-                    <li><a href="#!">CSS</a></li>
-                    <li><a href="#!">Tutorials</a></li>
-                </ul>
-            </div>
+          <div class="col-sm-12 my-top">
+            <% @tags.each do |tag| %>
+              <%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.name), class: "btn btn-outline-secondary btn-sm text-decoration-none" %>
+            <% end %>
+          </div>
         </div>
     </div>
 </div>
 <!-- Side widget-->
 <div class="card mb-4">
-  <div class="card-header">My profile</div>
+  <div class="card-header">管理者プロフィール</div>
   <div class="row g-0">
     <div class="col-5 col-sm-4">
       <img src="/images/image_icon.jpg" class="img-fluid w-100" alt="card-horizontal-image">
@@ -40,7 +31,7 @@
     <div class="col-7 col-sm-8">
       <div class="card-body">
         <h5 class="card-title">Ogawa Shunya</h5>
-        <p class="card-text">Fintech系のWeb自社開発企業で働いています。Ruby on Railsを中心にフロントエンドもたまに触ります。</p>
+        <p class="card-text">公務員から転職して、不動産系の自社開発企業で働いています。Ruby on Railsを中心にフロントエンドもたまに触ります。</p>
         <%= link_to 'https://twitter.com/ago_ago_5' do %>
         <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
         <% end %>

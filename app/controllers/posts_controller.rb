@@ -15,6 +15,8 @@ class PostsController < ApplicationController
     else
       @posts = Post.with_rich_text_cotent.page(params[:page]).per(6)
     end
+    
+    @tags = Post.tags_on(:tags)
   end
 
   # GET /posts/1 or /posts/1.json

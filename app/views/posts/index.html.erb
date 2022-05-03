@@ -22,21 +22,20 @@
                     <%= link_to [post] do %>
                       <h3 class="card-title"><%= post.title %></h3>
                     <% end %>
-                    <%= render 'posts/tag_list', tag_list: post.tag_list %>
+                    <p>タグ: <%= raw(post.tag_list.map { |t| link_to t, tag_path(t), class: "btn btn-outline-secondary btn-sm text-decoration-none " }.join(' ')) %></p>
                   </div>
               </div>
             </div>
           <% end %>
         </div>
+        <%= paginate @posts, theme: 'bootstrap-5' %>
       </div>
-        
       <div class="col-lg-4">
           <%= render partial: "side_widget" %>
       </div>
     </div>
   </div>
 </div>
-        <%= paginate @posts, theme: 'bootstrap-5' %>
 
 <footer class="py-4 bg-primary bg-opacity-50">
   <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>

@@ -28,7 +28,8 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new(status: draft)
+    @post.published! if @post.save
   end
 
   # GET /posts/1/edit
@@ -82,7 +83,7 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:cotent, :top_image, :title, :tag_list)
+      params.require(:post).permit(:cotent, :top_image, :title, :tag_list, :status)
     end
 
     def ensure_user
@@ -99,5 +100,10 @@ class PostsController < ApplicationController
       unless current_user.admin == true
         redirect_to root_path
       end
+    end
+
+    def switch_status
+      @post.switch_status!
+      redirect_to root_path, notice: 'ステータスを変更しました'
     end
 end

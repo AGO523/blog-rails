@@ -15,6 +15,12 @@ class Post < ApplicationRecord
     content_type: [:png, :jpg, :jpeg], 
     size: { less_than_or_equal_to: 10.megabytes }, 
     dimension: { width: { max: 2000 }, height: { max: 2000 }}
+
+  enum status: { draft: 0, published: 1, deleted: 2 }
+  validates :status, inclusion: { in: Post.statuses.keys }
+  def switch_status!
+    draft? ? published! : draft!
+  end
   
   def seach_data
   {

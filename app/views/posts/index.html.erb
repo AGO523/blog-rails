@@ -22,7 +22,9 @@
                     <%= link_to [post] do %>
                       <h3 class="card-title"><%= post.title %></h3>
                     <% end %>
-                    <p>タグ: <%= raw(post.tag_list.map { |t| link_to t, tag_path(t), class: "btn btn-outline-secondary btn-sm text-decoration-none " }.join(' ')) %></p>
+                    <% if post.tag_list.present? %>
+                      <p>タグ: <%= raw(post.tag_list.map { |t| link_to t, tag_path(t), class: "btn btn-outline-secondary btn-sm text-decoration-none " }.join(' ')) %></p>
+                    <% end %>
                   </div>
               </div>
             </div>

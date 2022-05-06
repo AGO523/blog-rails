@@ -11,9 +11,9 @@ class PostsController < ApplicationController
     # if @post_search_form.present?
     #   @posts = @post_search_form.search
     if params[:tag]
-      @posts = Post.tagged_with(params[:tag]).page(params[:page]).per(6)
+      @posts = Post.tagged_with(params[:tag]).page(params[:page]).per(6).order(created_at: :desc)
     else
-      @posts = Post.with_rich_text_cotent.page(params[:page]).per(6)
+      @posts = Post.with_rich_text_cotent.page(params[:page]).per(6).order(created_at: :desc)
     end
 
     @tags = Post.tags_on(:tags)

@@ -23,6 +23,9 @@ gem 'elasticsearch-rails'
 gem 'devise'
 gem 'cancancan'
 gem 'rails_admin'
+gem 'dotenv-rails'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'

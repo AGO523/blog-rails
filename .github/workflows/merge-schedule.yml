@@ -6,14 +6,19 @@ on:
       - edited
       - synchronize
   schedule:
-    - cron: 0 * * * *
+    # https://crontab.guru/every-hour
+    - cron: */5 * * * *
 
 jobs:
   merge_schedule:
     runs-on: ubuntu-latest
     steps:
-      - uses: gr2m/merge-schedule-action@1ef6893192811edbec08113370a9d973922e84c7
+      - uses: gr2m/merge-schedule-action@v1
         with:
-          time_zone: "Asia/Tokyo"
+          # Merge method to use. Possible values are merge, squash or
+          # rebase. Default is merge.
+          merge_method: squash
+          #  Time zone to use. Default is UTC.
+          time_zone: "America/Los_Angeles"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

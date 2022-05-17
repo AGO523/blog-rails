@@ -7,7 +7,7 @@ on:
       - synchronize
   schedule:
     # https://crontab.guru/every-hour
-    - cron: 20 * * * *
+    - cron: "*/5 * * * *"
 
 jobs:
   merge_schedule:
@@ -19,6 +19,6 @@ jobs:
           # rebase. Default is merge.
           merge_method: squash
           #  Time zone to use. Default is UTC.
-          time_zone: "America/Los_Angeles"
+          time_zone: "Asia/Tokyo"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

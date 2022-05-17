@@ -3,7 +3,8 @@ name: Sample actions
 # トリガーの設定
 on:
   push:
-    branches: main # mainブランチの場合はmainに変更
+    branches:
+      - main
 
 jobs:
   build:

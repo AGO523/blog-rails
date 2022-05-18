@@ -2,13 +2,15 @@ name: Sample actions
 
 # トリガーの設定
 on:
-  push:
+  pull_request:
     branches:
       - main
+    types: [closed]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest # 実行環境の設定
+  tag:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
 
     steps:
       - uses: actions/checkout@v2

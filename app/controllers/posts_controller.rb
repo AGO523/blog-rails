@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     if params[:tag]
       @posts = Post.tagged_with(params[:tag]).published.page(params[:page]).per(8).order(created_at: :desc)
     else
-      @posts = Post.with_rich_text_cotent.page(params[:page]).published.per(6).order(created_at: :desc)
+      @posts = Post.with_rich_text_cotent.page(params[:page]).published.per(8).order(created_at: :desc)
     end
 
     @tags = Post.tags_on(:tags)
